@@ -1,0 +1,23 @@
+.sidebar {
+    background: #202022;
+    color: #f3f3f3;
+    li {
+        padding: 0;
+    }
+    li:hover {
+        background-color: #0099ff;
+    };
+}
+
+.categories-menu {
+    line-height: 44px;
+    padding: 0 10px;
+}
+
+#add-category-show {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFF;
+    text-decoration: none;
+}

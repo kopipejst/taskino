@@ -1,0 +1,39 @@
+$sidebar: 250px;
+
+.panel {
+    overflow: auto;
+}
+
+.sidebar {
+    width: $sidebar;
+    float: left;
+}
+.list {
+    margin-left: $sidebar;
+    .top {
+        background: #EDEDED;
+    }
+}
+.top {
+    line-height: 44px;
+    //height: 40px;
+    width: 100%;
+}
+.add-new-category {
+    background: #EDEDED;
+    position: absolute;
+    top: -50px;
+    border-bottom: 1px solid #DDDDDD;
+}
+#add-category {
+    float: right;
+    margin-right: 10px;
+    margin-top: 7px;
+}
+
+.sidebar,
+.list {
+    width: 100%;
+    position: absolute;
+    margin-left: 0;
+}
