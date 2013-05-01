@@ -1,0 +1,69 @@
+@import 'sass-bootstrap/lib/bootstrap';
+@import 'sidebar';
+@import 'panel';
+@import 'list';
+@import 'sidetap';
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+li {
+    padding: 15px 10px;
+}
+
+#new-todo,
+#new-category {
+    border: none;
+    background: none;
+    outline: none;
+    box-shadow: none;
+    font-size: 20px;
+}
+
+#new-category {
+    font-size: 16px;
+    margin-left: 10px;
+    width: 150px;
+}
+
+#new-todo:focus {
+    outline: none;
+    box-shadow: none;
+}
+form {
+    margin: 0;
+    padding: 5px 0;
+}
+.new-holder {
+    padding: 10px;
+    border-bottom: 1px solid #f3f3f3;
+}
+#add-new {
+    float: right;
+}
+
+.devider {
+    background: #f3f3f3;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+    padding: 10px;
+    .clear-done {
+        float: right;
+    }
+}
+
+.todo-holder {
+    overflow-x: auto;
+    margin-top: 44px;
+}
+
+
+
+
+
+
+
+
+
