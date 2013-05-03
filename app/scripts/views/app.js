@@ -1,85 +1,88 @@
-/*global define*/
+/*global define,snapper*/
+'use strict';
 
-define(['jquery', 'underscore', 'backbone', 'collections/list', 'collections/categories', 'views/list', 'views/category'], 
-    function($, _, Backbone, TodoList, CategoriesCollection, ListView, CategoryView) {
+define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/lists', 'views/item', 'views/list'], 
+    function($, _, Backbone, Items, Lists, ItemView, ListView) {
 
     var AppView = Backbone.View.extend({
         el: $('#app'),
 
         events: {
-            'keypress #new-todo': 'createOnEnter',
+            'keypress #new-item': 'createOnEnter',
             'click #add-new': 'createOnSubmit',
             'click .clear-done': 'removeDone',
-            'click #add-category': 'addCategory',
-            'click .category a': 'prepareCategoryId',
-            'click .category span': 'removeCategory',
-            'click #add-category-show': 'showAddCategory'
+            'click .list a': 'prepareListId',
+            'click .list span': 'removeList',
+            'click #add-list-show': 'showAddList',
+            'click #add-list': 'addList',
+            'click #add-list-cancel': 'addListCancel'
         },
 
         initialize: function() {
 
-            this.$input = this.$('#new-todo');
-            this.$inputCategory = this.$('#new-category');
-            this.$activeCategory = this.$('.active-category');
+            this.$input = this.$('#new-item');
+            this.$inputList = this.$('#new-list');
+            this.$activeListTitle = this.$('.active-list-title');
+            this.$overlay = this.$('#overlay');
             //this.$activeCategoryTotal = this.$('.active-category-total');
+            //
+            this.items = new Items();
+            this.lists = new Lists();
 
-            this.collection = new TodoList();
-            this.categoryCollection = new CategoriesCollection();
+            this.listenTo(this.items, 'add', this.addOne);
+            this.listenTo(this.lists, 'add', this.addOneList);
 
-            this.listenTo(this.collection, 'add', this.addOne);
-            this.listenTo(this.categoryCollection, 'add', this.addOneCategory);
-            
-            this.collection.fetch();
+            this.items.fetch();
             //this.collection.removeDone();
-            this.setCategoryId('home');
+            this.setListId(0);
+            this.refreshList();
 
-            this.categoryCollection.fetch();
+            this.lists.fetch();
 
         },
 
-        filterOne : function (todo) {
-            todo.markAsDone();
+        filterOne : function (item) {
+            item.markAsDone();
         },
 
         showDone : function () {
-            $('#todo-done').html('');
-            var coll = this.collection.filterDone(this.activeCategory);
-            coll.each(function (todo) {
-                var view = new ListView({ model: todo });
-                $('#todo-done').prepend(view.render().el);
+            $('#items-done').html('');
+            var coll = this.items.filterDone(this.activeList);
+            coll.each(function (item) {
+                var view = new ItemView({ model: item });
+                $('#items-done').prepend(view.render().el);
             }, this);
         },
 
         showActive : function () {
-            $('#todo-active').html('');
-            var coll = this.collection.filterActive(this.activeCategory);
-            coll.each(function (todo) {
-                var view = new ListView({ model: todo });
-                $('#todo-active').prepend(view.render().el);
+            $('#items-active').html('');
+            var coll = this.items.filterActive(this.activeList);
+            coll.each(function (item) {
+                var view = new ItemView({ model: item });
+                $('#items-active').prepend(view.render().el);
             }, this);
             //this.$activeCategoryTotal.html(this.collection.length);
         },
 
         removeDone: function () {
-            this.collection.removeDone(this.activeCategory);
-            this.showDone();
-            this.showActive();
+            this.items.removeDone(this.activeList);
+            this.refreshList();
         },
 
         update: function () {
             //this.filterAll();
         },
 
-        addOne: function(todo) {
-            var view = new ListView({ model: todo });
-            $('#todo-active').prepend(view.render().el);
+        addOne: function(item) {
+            var view = new ItemView({ model: item });
+            $('#items-active').prepend(view.render().el);
         },
 
         // Generate the attributes for a new Todo item.
         newAttributes: function () {
             return {
                 title: this.$input.val().trim(),
-                categoryId: this.activeCategory,
+                listId: this.activeList,
                 done: false
             };
         },
@@ -88,58 +91,81 @@ define(['jquery', 'underscore', 'backbone', 'collections/list', 'collections/cat
             if (e.which !== 13 || !this.$input.val().trim()) {
                 return;
             }
-            this.collection.create(this.newAttributes(), { wait: true });
+            this.items.create(this.newAttributes(), { wait: true });
             this.$input.val('');
             this.$input.focus();
         },
 
         createOnSubmit: function() {
             if (this.$input.val().trim()) {
-                this.collection.create(this.newAttributes(), { wait: true });
+                this.items.create(this.newAttributes(), { wait: true });
                 this.$input.val('');
                 this.$input.focus();
             }
         },
 
-        newCategory: function () {
+        newList: function () {
             return {
-                name: this.$inputCategory.val().trim()
+                name: this.$inputList.val().trim()
             };
         },
 
-        addCategory: function () {
-            this.categoryCollection.create(this.newCategory(), { wait: true });
-            this.$inputCategory.val('');
-            $('.add-new-category').animate({ top: "-50px" }, 300);
+        addOneList: function(list) {
+            var view = new ListView({ model: list });
+            $('#lists').prepend(view.render().el);
         },
 
-        addOneCategory: function(category) {
-            var view = new CategoryView({ model: category });
-            $('#categories-list').prepend(view.render().el);
+        prepareListId: function (evt) {
+            var id = $(evt.target).data('list-id');
+            $('.list a').removeClass('active-list');
+            $(evt.target).addClass('active-list');
+            Backbone.history.navigate('list/' + id, true);
+            this.setListId(id);
         },
 
-        prepareCategoryId: function (evt) {
-            var id = $(evt.target).data('category-id');
-            Backbone.history.navigate('category/' + id, true);
-            this.setCategoryId(id);
-        },
-
-        setCategoryId: function(id) {
-            this.activeCategory = id;
-            this.$activeCategory.html(this.categoryCollection.getNameById(id));
-            this.showDone();
-            this.showActive();
+        setListId: function (id) {
+            this.activeList = id;
+            this.$activeListTitle.html(this.lists.getNameById(id));
+            this.refreshList();
             snapper.close();
         },
 
-        removeCategory: function (evt) {
-            this.collection.removeByCategory(this.activeCategory);
-            this.categoryCollection.remove(this.activeCategory);
-            this.activeCategory = 0;
+        removeList: function () {
+            this.items.removeByListId(this.activeList);
+            this.lists.remove(this.activeList);
+            this.activeList = 0;
         },
 
-        showAddCategory: function () {
-            $('.add-new-category').animate({ top: 0 }, 300);
+        addList: function () {
+            var that = this;
+
+            this.lists.create(this.newList(), {
+                wait: true,
+                success: function (res) {
+                    that.$inputList.val('');
+                    that.$overlay.hide();
+                    that.setListId(res.id);
+                    that.$input.focus();
+                }
+            });
+        },
+
+        addListCancel: function () {
+            this.overlayHide();
+        },
+
+        overlayHide: function () {
+            $('#overlay').animate({ left: -$(document).width() }, 300);
+        },
+
+        showAddList: function () {
+            this.$inputList.focus();
+            $('#overlay').animate({ left: 0 }, 300).show();
+        },
+
+        refreshList: function () {
+            this.showActive();
+            this.showDone();
         }
 
     });

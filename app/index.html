@@ -21,39 +21,39 @@
             <div class="drawers absolute sidebar">
                 <div class="left-drawer absolute">
                     <div>
-                        <div class="top add-new-category">
-                            <input id="new-category" placeholder="List name">
-                            <button type="submit" class="btn" id="add-category">Add</button>
-                        </div>
-                        <div class="categories-menu">
+                        <div class="list-menu">
+                            <a href="javascript:void(0)" id="add-list-show">+</a>
                             Lists
-                            <a href="javascript:void(0)" id="add-category-show">+</a>
                         </div>
-                        <ul id="categories-list">
+                        <ul>
+                            <li class="list">
+                                <a href="javascript:void(0)" class="active-list" data-list-id="0">Default</a>
+                            </li>
                         </ul>
+                        <ul id="lists"></ul>
                     </div>
                 </div>
             </div>
             
-            <div id="content" class="absolute list scrollable">
+            <div id="content" class="absolute items scrollable">
                 <div id="toolbar" class="absolute">
                     <a href="javascript:void(0)" id="open-left"></a>
-                    <span class="active-category">Home</span><span class="active-category-total"></span>
+                    <span class="active-list-title"></span><span class="active-list-total"></span>
                 </div>
                 <div class="relative tall">
 
-                    <div class="todo-holder">
+                    <div class="items-holder">
  
                         <div class="new-holder">
-                            <input id="new-todo" placeholder="Don't forget to ..." autofocus>
+                            <input id="new-item" placeholder="Don't forget to ..." autofocus>
                             <button type="submit" class="btn" id="add-new">Add</button>
                         </div>
 
-                        <ul id="todo-active"></ul>
+                        <ul id="items-active"></ul>
                         <div class="devider">
                             Recently done <a href="javascript:void(0)" class="clear-done">clear</a>
                         </div>
-                        <ul id="todo-done"></ul>    
+                        <ul id="items-done"></ul>    
 
                     </div>
                 </div>
@@ -65,12 +65,20 @@
                 <%- title %>
             </script>
 
-            <script type="text/template" id="category-template">
-                <a href="javascript:void(0)" data-category-id="<%- id %>"><%- name %></a>
+            <script type="text/template" id="lists-template">
+                <a href="javascript:void(0)" data-list-id="<%- id %>"><%- name %></a>
             </script>
 
         </div>
 
+
+        <div id="overlay">
+            <div class="add-new-list">
+                <input id="new-list" placeholder="New list name"><br />
+                <button type="submit" class="btn btn-primary" id="add-list">Add List</button>
+                <button type="submit" class="btn" id="add-list-cancel">Cancel</button>
+            </div>            
+        </div>
 
         <!--[if lt IE 7]>
             <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
