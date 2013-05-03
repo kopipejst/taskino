@@ -10,7 +10,7 @@ define(['underscore', 'backbone', 'localStorage', 'models/list'], function(_, Ba
 
         localStorage: new LocalStorage('portalist-list'),
 
-        remove: function (listId) {
+        removeByListId: function (listId) {
             var m = this.where({id: listId});
             for(var i in m) {
                 m[i].destroy();

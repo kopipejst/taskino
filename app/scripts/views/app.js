@@ -11,11 +11,13 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             'keypress #new-item': 'createOnEnter',
             'click #add-new': 'createOnSubmit',
             'click .clear-done': 'removeDone',
-            'click .list a': 'prepareListId',
-            'click .list span': 'removeList',
+            'click .list a': 'selectList',
             'click #add-list-show': 'showAddList',
             'click #add-list': 'addList',
-            'click #add-list-cancel': 'addListCancel'
+            'click .overlay-cancel': 'overlayHide',
+            'click #edit-list-show': 'showEditLists',
+            'click #remove-list': 'removeList',
+            'click #rename-list': 'renameList'
         },
 
         initialize: function() {
@@ -24,8 +26,15 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             this.$inputList = this.$('#new-list');
             this.$activeListTitle = this.$('.active-list-title');
             this.$overlay = this.$('#overlay');
+
+            this.animationDuration = 300;
             //this.$activeCategoryTotal = this.$('.active-category-total');
             //
+            //
+            this.mode = '';
+            this.activeList = 0;
+            this.deleteList = 0;
+
             this.items = new Items();
             this.lists = new Lists();
 
@@ -35,7 +44,6 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             this.items.fetch();
             //this.collection.removeDone();
             this.setListId(0);
-            this.refreshList();
 
             this.lists.fetch();
 
@@ -115,10 +123,22 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             $('#lists').prepend(view.render().el);
         },
 
+        selectList: function (evt) {
+            if (this.mode === 'edit') {
+                this.editList(evt);
+            } else {
+                this.prepareListId(evt);
+            }
+        },
+
         prepareListId: function (evt) {
-            var id = $(evt.target).data('list-id');
+            var id = evt.target ? $(evt.target).data('list-id') : evt;
             $('.list a').removeClass('active-list');
-            $(evt.target).addClass('active-list');
+            if ( id !== 0) {
+                $(evt.target).addClass('active-list');
+            } else {
+                this.$('#default-list').addClass('active-list');
+            }
             Backbone.history.navigate('list/' + id, true);
             this.setListId(id);
         },
@@ -131,9 +151,15 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
         },
 
         removeList: function () {
-            this.items.removeByListId(this.activeList);
-            this.lists.remove(this.activeList);
-            this.activeList = 0;
+            this.items.removeByListId(this.deleteList);
+            this.lists.removeByListId(this.deleteList);
+            if (this.activeList === this.deleteList) {
+                this.activeList = 0;
+                this.deleteList = 0;
+                this.$activeListTitle.html(this.lists.getNameById(this.activeList));
+                this.refreshList();
+            }
+            this.overlayHide();
         },
 
         addList: function () {
@@ -150,22 +176,60 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             });
         },
 
-        addListCancel: function () {
-            this.overlayHide();
+        showEditLists: function (e) {
+            var $el = $(e.target);
+            if ( $el.hasClass('active-list') ) {
+                $el.removeClass('active-list');
+                this.editModeOff();
+            } else {
+                $el.addClass('active-list');
+                this.editModeOn();
+            }
+        },
+
+        editList: function (evt) {
+            var that = this;
+            this.deleteList = $(evt.target).data('list-id');
+            $('.overlay-panel').hide();
+            $('.edit-list').show();
+            $('#overlay').show().animate({ opacity: 1 }, this.animationDuration, function () { that.$inputList.focus(); });
+            $('#edit-list-name').val(this.lists.getNameById(this.deleteList));
         },
 
         overlayHide: function () {
-            $('#overlay').animate({ left: -$(document).width() }, 300);
+            $('#overlay').animate({ opacity: 0 }, this.animationDuration, function () { $(this).hide(); });
         },
 
         showAddList: function () {
-            this.$inputList.focus();
-            $('#overlay').animate({ left: 0 }, 300).show();
+            var that = this;
+            $('.overlay-panel').hide();
+            $('.add-new-list').show();
+            $('#overlay').show().animate({ opacity: 1 }, this.animationDuration, function () { that.$inputList.focus(); });
         },
 
         refreshList: function () {
             this.showActive();
             this.showDone();
+        },
+
+        editModeOn: function () {
+            $('#lists').addClass('mode-edit');
+            this.mode = 'edit';
+            $('#add-list-show').animate({ width: 'toggle'}, this.animationDuration);
+            $('#default-list').slideUp(this.animationDuration);
+        },
+
+        editModeOff: function () {
+            $('#lists').removeClass('mode-edit');
+            this.mode = '';
+            $('#add-list-show').animate({ width: 'toggle'}, this.animationDuration);
+            $('#default-list').slideDown(this.animationDuration);
+        },
+
+        renameList: function () {
+            var model = this.lists.get({id: this.deleteList});
+            model.save({ name: $('#edit-list-name').val() });
+            this.overlayHide();
         }
 
     });

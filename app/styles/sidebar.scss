@@ -4,30 +4,66 @@
     li {
         padding: 0;
     }
-    .active-list,
-    li:hover {
+    .active-list {
+        background-color: #0055ff;
+    }
+    a:hover {
         background-color: #0099ff;
-    };
+    }
 }
 
 .list-menu {
     line-height: 44px;
-    padding: 0;
+    height: 45px;
+    padding: 0 0 0 10px;
     font-size: 20px;
 }
 
-#add-list-show {
-    float: left;
-    font-size: 20px;
-    font-weight: bold;
+.list-menu a {
+    float: right;
     color: #FFF;
     text-decoration: none;
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.1);
     width: 44px;
     text-align: center;
-    margin: 7px 5px;
+    margin: 7px 5px 0;
     height: 30px;
     line-height: 30px;
+    font-size: 12px;
 }
+
+#add-list-show {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.delete {
+    background-color: red;
+    border: 2px solid white;
+    border-radius: 11px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin: 12px 10px 0;
+    display: inline-block;
+    float: left;
+    display: none;
+}
+
+
+.mode-edit {
+    background-color: black;
+}
+.mode-edit li a {
+    color: #ccc !important;
+}
+.mode-edit .active-list {
+    background-color: black;
+}
+.mode-edit li a:hover {
+    background-color: #999;
+}
+
+
+

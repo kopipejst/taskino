@@ -18,14 +18,13 @@ define([
 
         snapper = new Snap({
             element: $('#content')[0],
-            disable: 'right'
+            disable: 'right',
+            transitionSpeed: 0.1
         });
 
         $('#open-left').click ( function () {
             snapper.open('left');
         });
-
-        $('#overlay').css({ left: -$(document).width() }).show();
 
         Router.initialize();
     };

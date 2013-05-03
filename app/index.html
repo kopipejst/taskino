@@ -22,12 +22,13 @@
                 <div class="left-drawer absolute">
                     <div>
                         <div class="list-menu">
-                            <a href="javascript:void(0)" id="add-list-show">+</a>
                             Lists
+                            <a href="javascript:void(0)" id="add-list-show">+</a>
+                            <a href="javascript:void(0)" id="edit-list-show">edit</a>
                         </div>
                         <ul>
                             <li class="list">
-                                <a href="javascript:void(0)" class="active-list" data-list-id="0">Default</a>
+                                <a href="javascript:void(0)" class="active-list" id="default-list" data-list-id="0">Default</a>
                             </li>
                         </ul>
                         <ul id="lists"></ul>
@@ -66,6 +67,7 @@
             </script>
 
             <script type="text/template" id="lists-template">
+                <span class="delete" data-list-id="<%- id %>">-</span>
                 <a href="javascript:void(0)" data-list-id="<%- id %>"><%- name %></a>
             </script>
 
@@ -73,11 +75,18 @@
 
 
         <div id="overlay">
-            <div class="add-new-list">
-                <input id="new-list" placeholder="New list name"><br />
+            <div class="add-new-list overlay-panel">
+                <input id="new-list" placeholder="Name of new list"><br />
                 <button type="submit" class="btn btn-primary" id="add-list">Add List</button>
-                <button type="submit" class="btn" id="add-list-cancel">Cancel</button>
-            </div>            
+                <button type="submit" class="btn overlay-cancel">Cancel</button>
+            </div>
+
+            <div class="edit-list overlay-panel">
+                <input id="edit-list-name" placeholder="New list name"><br />
+                <button type="submit" class="btn btn-danger" id="remove-list">Delete</button>
+                <button type="submit" class="btn overlay-cancel">Cancel</button>
+                <button type="submit" class="btn btn-primary" id="rename-list">Rename</button>
+            </div>
         </div>
 
         <!--[if lt IE 7]>
