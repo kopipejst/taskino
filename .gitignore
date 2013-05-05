@@ -1,5 +1,5 @@
 .tmp
 .sass-cache
-.app/components
-.node_modules
+app/components
+node_modules
 npm-debug.log

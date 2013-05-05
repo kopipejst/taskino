@@ -1,20 +1,63 @@
-.items {
-    background: #fff;
-    font-size: 16px;
-    .newHolder,
-    li {
-        border-bottom: 1px solid #f3f3f3;
+.items-holder {
+    position: relative;
+    top: 44px;
+}
+
+.new-holder {
+    background: #ffffff;
+    display: block;
+    overflow: hidden;
+    border-bottom: 1px solid #cccccc;
+
+    input {
+        padding: 16px 10px;
+        font-size: 14px;
+        margin: 0 10px 0 0;
+        border: 0px none;
+        width: 220px;
+        background: #ffffff;
+    }
+
+    .add-new-task {
+        @extend button;
+        color: #ffffff;
+        font-size: 14px;
+        padding: 8px 15px;
+        background: #515D6F;
+        border: 0px solid;
+        width: 60px;
+        cursor: pointer;
+        @include border-radius(3px);
     }
 }
 
-.scrollable{
-    overflow: auto;
-    -webkit-transition-property: top, bottom;
-    transition-property: top, bottom;
-    -webkit-transition-duration: .2s, .2s;
-    transition-duration: .2s, .2s;
-    -webkit-transition-timing-function: linear, linear;
-    transition-timing-function: linear, linear;
-    -webkit-overflow-scrolling: touch;
+.items-active {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-bottom: 1px solid #cccccc;
+        padding: 10px;
+        line-height: 24px;
+    }
 }
 
+.devider {
+    background: #CCCCCC;
+    color: #ffffff;
+    padding: 5px 10px;
+}
+
+.items-done {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        border-bottom: 1px solid #cccccc;
+        padding: 10px;
+        line-height: 24px;
+        color: #999999;
+    }
+}

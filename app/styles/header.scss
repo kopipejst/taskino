@@ -1,0 +1,22 @@
+#toolbar {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 5;
+    height: 44px;
+    border-bottom: 1px solid #ddd;
+    background: #D95F4F;
+}
+
+#toolbar span {
+    position: absolute;
+    color: #ffffff;
+    @include text-shadow(0 1px 0px #000);
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 21px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 45px;
+}

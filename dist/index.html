@@ -1,17 +1,20 @@
 <!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>To-Do App</title>
+        <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="styles/main.css">
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="components/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
+        <script src="scripts/vendor/modernizr.js"></script>
     </head>
     <body id="app">
+
         <div class="relative tall">
             <div class="drawers absolute sidebar">
                 <div class="left-drawer absolute">
@@ -30,49 +33,54 @@
                     </div>
                 </div>
             </div>
-
+            
             <div id="content" class="absolute items scrollable">
-                <div id="toolbar" class="absolute toolbar">
+                <div id="toolbar" class="absolute">
                     <a href="javascript:void(0)" id="open-left"></a>
-                    <span class="active-list-title"></span>
-                    <span class="active-list-total"></span>
+                    <span class="active-list-title"></span><span class="active-list-total"></span>
                 </div>
                 <div class="relative tall">
+
                     <div class="items-holder">
+ 
                         <div class="new-holder">
-                            <input id="new-item" placeholder="Don't forget to ..." autofocus>
-                            <button type="submit" class="add-new-task" id="add-new">Add</button>
+                            <input id="new-item" placeholder="Don't forget to ..." autofocus="">
+                            <button type="submit" class="btn" id="add-new">Add</button>
                         </div>
 
-                        <ul id="items-active" class="items-active"></ul>
+                        <ul id="items-active"></ul>
                         <div class="devider">
                             Recently done <a href="javascript:void(0)" class="clear-done">clear</a>
                         </div>
-                        <ul id="items-done" class="items-done"></ul>
+                        <ul id="items-done"></ul>    
 
                     </div>
                 </div>
             </div>
         </div>
 
-        <script type="text/template" id="item-template">
-            <%- title %>
-        </script>
 
-        <script type="text/template" id="lists-template">
-            <span class="delete" data-list-id="<%- id %>">-</span>
-            <a href="javascript:void(0)" data-list-id="<%- id %>"><%- name %></a>
-        </script>
+            <script type="text/template" id="item-template">
+                <%- title %>
+            </script>
+
+            <script type="text/template" id="lists-template">
+                <span class="delete" data-list-id="<%- id %>">-</span>
+                <a href="javascript:void(0)" data-list-id="<%- id %>"><%- name %></a>
+            </script>
+
+        
+
 
         <div id="overlay">
             <div class="add-new-list overlay-panel">
-                <input id="new-list" placeholder="Name of new list"><br />
+                <input id="new-list" placeholder="Name of new list"><br>
                 <button type="submit" class="btn btn-primary" id="add-list">Add List</button>
                 <button type="submit" class="btn overlay-cancel">Cancel</button>
             </div>
 
             <div class="edit-list overlay-panel">
-                <input id="edit-list-name" placeholder="New list name"><br />
+                <input id="edit-list-name" placeholder="New list name"><br>
                 <button type="submit" class="btn btn-danger" id="remove-list">Delete</button>
                 <button type="submit" class="btn overlay-cancel">Cancel</button>
                 <button type="submit" class="btn btn-primary" id="rename-list">Rename</button>
@@ -91,8 +99,6 @@
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
 
-        <!-- build:js scripts/main.js -->
         <script data-main="scripts/main" src="components/requirejs/require.js"></script>
-        <!-- endbuild -->
 </body>
 </html>
