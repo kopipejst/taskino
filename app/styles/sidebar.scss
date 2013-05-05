@@ -1,30 +1,112 @@
+.drawers {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #3E4857;
+}
+
+.left-drawer, .right-drawer {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    overflow: auto;
+    width: 265px;
+    background: #3E4857;
+    color: #eee;
+    -webkit-transition-timing-function: linear, linear;
+    transition-timing-function: linear, linear;
+    -webkit-transition-duration: .2s, .2s;
+    transition-duration: .2s, .2s;
+    -webkit-transition-property: top, bottom;
+    transition-property: top, bottom;
+    -webkit-overflow-scrolling: touch;
+}
+
+.left-drawer {
+    z-index: 2;
+}
+
+.right-drawer {
+    right: 0;
+    left: auto;
+    z-index: 1;
+}
+
+.drawers h3 {
+    margin: 15px;
+    font-weight: normal;
+    font-size: 36px;
+}
+
+.demo-social {
+    padding: 0 15px;
+}
+
+.drawers h4 {
+    margin-bottom: 0;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.drawers ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.drawers ul li a {
+    display: block;
+    border-bottom: 1px solid #2D3442;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 12px 15px;
+    line-height: 24px;
+    font-weight: lighter;
+    @include text-shadow(0 0 1px #000);
+}
+
+.drawers p {
+    padding: 15px;
+    font-size: 12px;
+    opacity: 0.5;
+}
+
+
+
+
 .sidebar {
     background: #202022;
     color: #f3f3f3;
+
     li {
         padding: 0;
     }
+
     .active-list {
-        background-color: #0055ff;
+        background-color: #657793;
     }
 }
 
 .list-menu {
     line-height: 44px;
     height: 45px;
-    padding: 0 0 0 10px;
+    padding: 0 0 0 15px;
     font-size: 20px;
+    background: #2D3441;
+    font-weight: lighter;
 }
 
 .list-menu a {
     float: right;
     color: #FFF;
+    background: #515D6F;
     text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    width: 44px;
+    @include border-radius(5px);
+    padding: 0px 10px;
     text-align: center;
-    margin: 7px 5px 0;
+    margin: 7px 5px;
     height: 30px;
     line-height: 30px;
     font-size: 12px;
@@ -50,16 +132,12 @@
 
 
 .mode-edit {
-    background-color: black;
+    background-color: #9D4535;
 }
-.mode-edit li a {
-    color: #ccc !important;
-}
+
+
 .mode-edit .active-list {
-    background-color: black;
-}
-.mode-edit li a:hover {
-    background-color: #999;
+    background-color: #9D4535;
 }
 
 
