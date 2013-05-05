@@ -180,9 +180,11 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             var $el = $(e.target);
             if ( $el.hasClass('active-list') ) {
                 $el.removeClass('active-list');
+                $el.html('edit');
                 this.editModeOff();
             } else {
                 $el.addClass('active-list');
+                $el.html('done');
                 this.editModeOn();
             }
         },
