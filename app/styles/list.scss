@@ -28,6 +28,7 @@
         width: 60px;
         cursor: pointer;
         @include border-radius(3px);
+        font-weight: lighter;
     }
 }
 
@@ -49,6 +50,7 @@
     background: #CCCCCC;
     color: #ffffff;
     padding: 5px 10px;
+    font-weight: lighter;
 }
 
 .clear-done {
