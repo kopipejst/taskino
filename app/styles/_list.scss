@@ -72,20 +72,3 @@
         font-weight: lighter;
     }
 }
-
-#overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #FFF;
-    z-index: 5;
-    display: none;
-    opacity: 0;
-}
-
-.overlay-panel {
-    display: none;
-    text-align: center;
-    padding: 20px 0;
-}

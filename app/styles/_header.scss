@@ -5,6 +5,27 @@
     z-index: 5;
     height: 45px;
     background: #D95F4F;
+
+    .cancel-list,
+    .save-list {
+        position: absolute;
+        z-index: 1;
+        display: block;
+        margin: 7px 5px;
+        height: 30px;
+        color: #ffffff;
+        border: 0px solid;
+        padding: 0px 10px;
+        cursor: pointer;
+        @include border-radius(3px);
+        background: #9D4535;
+        font-weight: lighter;
+        font-size: 13px;
+    }
+    .save-list {
+        float: right;
+        position: relative;
+    }
 }
 
 #toolbar span {

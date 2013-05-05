@@ -1,0 +1,64 @@
+#overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    background: #eeeeee;
+    z-index: 5;
+    display: none;
+    opacity: 0;
+}
+
+.overlay-panel {
+    display: none;
+    text-align: center;
+    padding: 55px 0 20px 0;
+
+    .add-new-list-button,
+    .rename-list-button {
+        color: #ffffff;
+        font-size: 14px;
+        padding: 8px 15px;
+        background: #515D6F;
+        border: 0px solid;
+        width: 60px;
+        cursor: pointer;
+        @include border-radius(3px);
+        font-weight: lighter;
+    }
+
+    .rename-list-button {
+        width: 80px;
+    }
+
+    .edit-list-name {
+        width: 200px;
+    }
+
+    .delete-notice {
+        margin: 10px 0px 0px 0px;
+        padding: 10px;
+        display: block;
+        overflow: hidden;
+        background: #ffffff;
+        font-size: 14px;
+        font-weight: lighter;
+        text-align: left;
+
+        p {
+            margin: 0px 0px 10px 0px;
+        }
+    }
+
+    .remove-list {
+        color: #ffffff;
+        font-size: 14px;
+        padding: 8px 15px;
+        background: #D95F4F;
+        border: 0px solid;
+        width: 80px;
+        cursor: pointer;
+        @include border-radius(3px);
+        font-weight: lighter;
+    }
+}

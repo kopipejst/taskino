@@ -64,18 +64,32 @@
             <a href="javascript:void(0)" data-list-id="<%- id %>"><%- name %></a>
         </script>
 
-        <div id="overlay">
+        <div id="overlay" class="edit-lists">
             <div class="add-new-list overlay-panel">
-                <input id="new-list" placeholder="Name of new list"><br />
-                <button type="submit" class="btn btn-primary" id="add-list">Add List</button>
-                <button type="submit" class="btn overlay-cancel">Cancel</button>
+                <div id="toolbar" class="absolute toolbar">
+                    <span class="edit-list-title">Add New List</span>
+                    <button type="submit" class="cancel-list overlay-cancel">Cancel</button>
+                    <button type="submit" class="save-list overlay-save">Save</button>
+                </div>
+                <div class="new-holder">
+                    <input id="new-list" placeholder="Name of new list" autofocus>
+                    <button type="submit" class="add-new-list-button" id="add-list">Add</button>
+                </div>
             </div>
 
             <div class="edit-list overlay-panel">
-                <input id="edit-list-name" placeholder="New list name"><br />
-                <button type="submit" class="btn btn-danger" id="remove-list">Delete</button>
-                <button type="submit" class="btn overlay-cancel">Cancel</button>
-                <button type="submit" class="btn btn-primary" id="rename-list">Rename</button>
+                <div id="toolbar" class="absolute toolbar">
+                    <span class="edit-list-title">Edit List</span>
+                    <button type="submit" class="cancel-list overlay-cancel">Cancel</button>
+                </div>
+                <div class="new-holder">
+                    <input id="edit-list-name" class="edit-list-name" placeholder="New list name">
+                    <button type="submit" class="rename-list-button" id="rename-list">Rename</button>
+                </div>
+                <div class="delete-notice">
+                    <p>Deleting list will delete all items from list permanently.</p>
+                    <button type="submit" class="remove-list" id="remove-list">Delete</button>
+                </div>
             </div>
         </div>
 
