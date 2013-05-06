@@ -39,7 +39,6 @@ body {
     z-index: 3;
     background: #eeeeee;
     -webkit-transform: translate3d(0, 0, 0);
-    overflow-x: scroll;
 }
 
 .snapjs-right .left-drawer {
@@ -126,3 +125,16 @@ body {
 .snapjs-expand-right .right-drawer{
     width: 100%;
 }
+
+.scrollable{
+    overflow:auto;
+    -webkit-transition-property:top,
+    bottom;transition-property:top,bottom;
+    -webkit-transition-duration:.2s,.2s;
+    transition-duration:.2s,.2s;
+    -webkit-transition-timing-function:linear,linear;
+    transition-timing-function:linear,linear;
+    -webkit-overflow-scrolling:touch
+}
+
+
