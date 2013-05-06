@@ -156,7 +156,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
                 name = this.$inputList.val().trim();
 
             if (!name) {
-                that.$input.focus();
+                that.$inputList.focus();
                 return false;
             }
 
@@ -168,6 +168,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
                     that.$inputList.val('');
                     that.$overlay.hide();
                     that.setListId(res.id);
+                    that.$input.focus();
                 }
             });
         },
