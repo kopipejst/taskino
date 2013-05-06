@@ -6,7 +6,6 @@ var snapper,
         fixedListName: 'Default'
     };
 
-
 define([
     'jquery',
     'underscore',

@@ -49,10 +49,6 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
 
         },
 
-        filterOne : function (item) {
-            item.markAsDone();
-        },
-
         showDone : function () {
             $('#items-done').html('');
             var coll = this.items.filterDone(this.activeList);
@@ -139,7 +135,6 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             } else {
                 this.$('#default-list').addClass('active-list');
             }
-            Backbone.history.navigate('list/' + id, true);
             this.setListId(id);
         },
 

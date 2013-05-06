@@ -13,10 +13,6 @@ require.config({
             ],
             exports: 'Backbone'
         },
-        bootstrap: {
-            deps: ['jquery'],
-            exports: 'jquery'
-        },
         localStorage: {
             deps: ['backbone'],
             exports: 'LocalStorage'
@@ -29,7 +25,6 @@ require.config({
         jquery: '../components/jquery/jquery',
         backbone: '../components/backbone-amd/backbone',
         underscore: '../components/underscore-amd/underscore',
-        bootstrap: 'vendor/bootstrap',
         localStorage: 'vendor/backbone.localStorage',
         snap: 'vendor/snap.min'
     }
