@@ -108,12 +108,6 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             }
         },
 
-        newList: function () {
-            return {
-                name: this.$inputList.val().trim()
-            };
-        },
-
         addOneList: function(list) {
             var view = new ListView({ model: list });
             $('#lists').prepend(view.render().el);
@@ -158,15 +152,22 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
         },
 
         addList: function () {
-            var that = this;
+            var that = this,
+                name = this.$inputList.val().trim();
 
-            this.lists.create(this.newList(), {
+            if (!name) {
+                that.$input.focus();
+                return false;
+            }
+
+            this.lists.create({
+                name: this.$inputList.val().trim()
+            }, {
                 wait: true,
                 success: function (res) {
                     that.$inputList.val('');
                     that.$overlay.hide();
                     that.setListId(res.id);
-                    that.$input.focus();
                 }
             });
         },
@@ -212,14 +213,14 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
         editModeOn: function () {
             $('#lists').addClass('mode-edit');
             this.mode = 'edit';
-            $('#add-list-show').animate({ width: 'toggle'}, this.animationDuration);
+            $('#add-list-show').hide();
             $('#default-list').slideUp(this.animationDuration);
         },
 
         editModeOff: function () {
             $('#lists').removeClass('mode-edit');
             this.mode = '';
-            $('#add-list-show').animate({ width: 'toggle'}, this.animationDuration);
+            $('#add-list-show').show();
             $('#default-list').slideDown(this.animationDuration);
         },
 
