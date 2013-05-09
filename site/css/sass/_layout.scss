@@ -54,7 +54,7 @@ body {
 
 .firefox-marketplace {
     background: url('../img/firefox-marketplace.png') #eeeeee top left no-repeat;
-    display: inline-block;
+    float: left;
     width: 360px;
     padding: 40px 0px;
     @include border-radius(3px);
@@ -73,7 +73,7 @@ body {
 
 .github {
     background: url('../img/github.png') #ffffff top left no-repeat;
-    display: inline-block;
+    float: left;
     width: 180px;
     padding: 40px 0px;
     @include border-radius(3px);
@@ -81,7 +81,7 @@ body {
     text-indent:100%;
     white-space: nowrap;
     opacity: 0.5;
-    margin: 0 0 0 15px;
+    margin: 60px 0px 60px 15px;
     position: relative;
     left: -200%;
 
