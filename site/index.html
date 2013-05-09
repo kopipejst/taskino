@@ -8,6 +8,7 @@
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="css/style.css">
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="js/jquery.flexslider-min.js"></script>
     </head>
     <body>
         <div class="wrapper clearfix">
@@ -24,7 +25,16 @@
             </div>
             <div class="content-right">
                 <div class="smartphone">
-                    <iframe src="">Ovde ide Iframe</iframe>
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li>
+                              <img src="img/taskino_screenshot_1.png" />
+                            </li>
+                            <li>
+                              <img src="img/taskino_screenshot_2.png" />
+                            </li>
+                        </ul>
+                    </div>
                     <span class="tooltip">Try it here!<span class="arrow"></span></span>
                 </div>
             </div>
@@ -40,6 +50,14 @@
             $(document).ready(function(){
                 $('.content-left').addClass('transition-left');
                 $('.content-right').addClass('transition-top');
+                $('.flexslider').flexslider({
+                    animation: "slide",
+                    directionNav: true,
+                    slideShow: true,
+                    slideshowSpeed: 5000,
+                    itemWidth: 320,
+                    controlNav: false
+                });
             });
         </script>
     </body>
