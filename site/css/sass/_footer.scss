@@ -1,0 +1,31 @@
+/********************************************************************
+    Footer
+********************************************************************/
+
+footer {
+    background: #ffffff;
+    background: rgba(255,255,255,1);
+    padding: 10px 0px 0px 0px;
+
+    .twitter-share {
+        background: url('../img/twitter-share.png') left center no-repeat;
+        padding: 10px 0 10px 40px;
+        margin: 10px 0 25px 0;
+    }
+}
+
+.footer-content {
+    width: 1020px;
+    margin: 0px auto;
+    display: block;
+
+    p {
+        color: #333333;
+        font-weight: lighter;
+
+        a {
+            color: #0085B2;
+            text-decoration: none;
+        }
+    }
+}

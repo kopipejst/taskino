@@ -1,0 +1,138 @@
+/********************************************************************
+    Layout
+********************************************************************/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,500,700,300);
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #ffffff;
+    color: rgba(255,255,255,1); // #ffffff
+    background-color: #D96143;
+    background-color: rgba(217,97,67,1); //#D96143
+    background-image: -webkit-repeating-linear-gradient(135deg, transparent, transparent 1px, rgba(221,112,85,0.5) 1px, rgba(221,112,85,0.5) 8px);
+    background-image: -moz-repeating-linear-gradient(135deg, transparent, transparent 1px, rgba(221,112,85,0.5) 1px, rgba(221,112,85,0.5) 8px);
+    background-image: -ms-repeating-linear-gradient(135deg, transparent, transparent 1px, rgba(221,112,85,0.5) 1px, rgba(221,112,85,0.5) 8px);
+    background-image: -o-repeating-linear-gradient(135deg, transparent, transparent 1px, rgba(221,112,85,0.5) 1px, rgba(221,112,85,0.5) 8px);
+    background-size: 100% 100%;
+}
+
+
+.wrapper {
+    padding: 40px 0 0 0;
+    width: 1020px;
+    margin: 0px auto;
+    display: block;
+
+    h2 {
+        font-weight: normal;
+        font-size: 52px;
+        @include text-shadow(0 1px 1px #9D4630);
+        margin: 60px 0 40px 0;
+        position: relative;
+        left: -200%;
+    }
+
+    p {
+        @include text-shadow(0 1px 1px #9D4630);
+        font-weight: lighter;
+        position: relative;
+        left: -200%;
+    }
+}
+
+.content-left {
+    float: left;
+    width: 55%;
+}
+
+.content-right {
+    float: left;
+    width: 45%;
+    position: relative;
+}
+
+.firefox-marketplace {
+    background: url('../img/firefox-marketplace.png') #eeeeee top left no-repeat;
+    display: inline-block;
+    width: 360px;
+    padding: 40px 0px;
+    @include border-radius(3px);
+    overflow: hidden;
+    text-indent:100%;
+    white-space: nowrap;
+    margin: 60px 0px;
+    position: relative;
+    left: -200%;
+
+    &:hover {
+        @include box-shadow(0 0 10px #9D4630);
+        background-color: #ffffff;
+    }
+}
+
+.github {
+    background: url('../img/github.png') #ffffff top left no-repeat;
+    display: inline-block;
+    width: 180px;
+    padding: 40px 0px;
+    @include border-radius(3px);
+    overflow: hidden;
+    text-indent:100%;
+    white-space: nowrap;
+    opacity: 0.5;
+    margin: 0 0 0 15px;
+    position: relative;
+    left: -200%;
+
+    &:hover {
+        @include box-shadow(0 0 10px #9D4630);
+        opacity: 1;
+    }
+}
+
+.transition-left {
+    h2 {
+        @include transition(left 0.4s ease);
+        left: 0;
+    }
+
+    p {
+        @include transition(left 0.8s ease);
+        left: 0;
+    }
+
+    .firefox-marketplace,
+    .github {
+        @include transition(left 1.2s ease);
+        left: 0;
+
+        &:hover {
+            @include transition(all 0.3s ease-in-out);
+        }
+    }
+}
+
+.smartphone {
+    background: url("../img/smartphone.png") top center no-repeat;
+    height: 480px;
+    width: 320px;
+    padding: 90px 40px 120px 40px;
+    position: absolute;
+    right: 0px;
+    top: -800px;
+
+    iframe {
+        width: 318px;
+        border: 1px solid #ffffff;
+        height: 478px;
+    }
+}
+
+.transition-top {
+
+    .smartphone {
+        @include transition(top 2s ease);
+        top: 0;
+    }
+}

@@ -1,0 +1,26 @@
+/********************************************************************
+    Basic stylesheet
+********************************************************************/
+
+/*
+    Compass
+    http://compass-style.org/reference/compass/
+ */
+@import "compass";
+
+
+/*
+    Normalize - Reset
+    http://necolas.github.io/normalize.css/2.1.1/normalize.css
+ */
+@import "normalize.scss";
+
+
+/*
+    Styles
+ */
+
+@import "helper"; // helper
+@import "header"; // header styles
+@import "layout"; // intro styles
+@import "footer"; // footer styles
