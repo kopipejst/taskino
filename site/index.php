@@ -28,14 +28,16 @@
                     <div class="flexslider">
                         <ul class="slides">
                             <li>
-                              <img src="img/taskino_screenshot_1.png" />
+                              <img src="img/taskino-list.png" alt="Taskino Lists"/>
                             </li>
                             <li>
-                              <img src="img/taskino_screenshot_2.png" />
+                              <img src="img/taskino-tasks.png" alt="Taskino Tasks"/>
+                            </li>
+                            <li>
+                              <img src="img/taskino-edit.png" alt="Taskino Edit"/>
                             </li>
                         </ul>
                     </div>
-                    <span class="tooltip">Try it here!<span class="arrow"></span></span>
                 </div>
             </div>
         </div>
