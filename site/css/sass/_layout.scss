@@ -13,6 +13,10 @@ body {
     color: rgba(255,255,255,1); // #ffffff
 }
 
+img {
+    max-width: 100%;
+}
+
 .wrapper {
     background-color: #D96143;
     background-color: rgba(217,97,67,1); //#D96143
@@ -102,12 +106,12 @@ body {
     margin: 20px 0px 10px 0px;
     position: relative;
     left: -200%;
+    background-size: 100%;
 
     @include at-breakpoint(58em 14) {
         width: 65%;
         margin: 60px 0px 60px 0px;
         padding: 6.5% 0;
-        background-size: 100%;
     }
 
     &:hover {
@@ -167,7 +171,7 @@ body {
 .smartphone {
     background: #333333;
     height: 420px;
-    width: 280px;
+    width: 260px;
     padding: 10px;
     margin: 0 auto 30px auto;
     position: relative;
