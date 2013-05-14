@@ -12,31 +12,33 @@
     </head>
     <body>
         <div class="wrapper clearfix">
-            <div class="content-left">
-                <header>
-                    <h1 class="logo">
-                        <a href="">Taskino</a>
-                    </h1>
-                </header>
-                <h2>Another ToDo app <br>for your Multiple Tasks</h2>
-                <p>You can easy add task to your list, add, edit or remove multiple list as you want, “tap” it to finish task, restore “recently done” tasks.</p>
-                <a href="marketplace.firefox.com" class="firefox-marketplace" title="Available on FireFox Marketplace">Available on FireFox Marketplace</a>
-                <a href="github" class="github" title="View at GitHub">View at GitHub</a>
-            </div>
-            <div class="content-right">
-                <div class="smartphone">
-                    <div class="flexslider">
-                        <ul class="slides">
-                            <li>
-                              <img src="img/taskino-list.png" alt="Taskino Lists"/>
-                            </li>
-                            <li>
-                              <img src="img/taskino-tasks.png" alt="Taskino Tasks"/>
-                            </li>
-                            <li>
-                              <img src="img/taskino-edit.png" alt="Taskino Edit"/>
-                            </li>
-                        </ul>
+            <div class="container clearfix">
+                <div class="content-left">
+                    <header>
+                        <h1 class="logo">
+                            <a href="">Taskino</a>
+                        </h1>
+                    </header>
+                    <h2>Another ToDo app for your Multiple Tasks</h2>
+                    <p>You can easy add task to your list, add, edit or remove multiple list as you want, “tap” it to finish task, restore “recently done” tasks.</p>
+                    <a href="marketplace.firefox.com" class="firefox-marketplace" title="Available on FireFox Marketplace">Available on FireFox Marketplace</a>
+                    <a href="github" class="github" title="View at GitHub">View at GitHub</a>
+                </div>
+                <div class="content-right">
+                    <div class="smartphone">
+                        <div class="flexslider">
+                            <ul class="slides">
+                                <li>
+                                  <img src="img/taskino-list.png" alt="Taskino Lists"/>
+                                </li>
+                                <li>
+                                  <img src="img/taskino-tasks.png" alt="Taskino Tasks"/>
+                                </li>
+                                <li>
+                                  <img src="img/taskino-edit.png" alt="Taskino Edit"/>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -7,7 +7,7 @@
     http://compass-style.org/reference/compass/
  */
 @import "compass";
-
+@import "susy";
 
 /*
     Normalize - Reset
@@ -20,6 +20,7 @@
     Styles
  */
 
+@import "vars"; // helper
 @import "helper"; // helper
 @import "header"; // header styles
 @import "layout"; // intro styles

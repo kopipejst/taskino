@@ -16,6 +16,11 @@ header {
         overflow: hidden;
         text-indent:100%;
         white-space: nowrap;
+        background-size: 85%;
+
+        @include at-breakpoint(58em 14) {
+            background-size: 100%;            
+        }
     }
 }
 

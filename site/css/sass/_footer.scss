@@ -4,7 +4,6 @@
 
 footer {
     background: #ffffff;
-    background: rgba(255,255,255,1);
     padding: 10px 0px 0px 0px;
 
     .twitter-share {
@@ -15,9 +14,17 @@ footer {
 }
 
 .footer-content {
-    width: 1020px;
+    @include container;
     margin: 0px auto;
     display: block;
+
+    @include at-breakpoint(48em 8) {
+        @include container;
+    }
+
+    @include at-breakpoint(58em 14) {
+        @include container;
+    }
 
     p {
         color: #333333;
