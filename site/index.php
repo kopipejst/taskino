@@ -22,7 +22,7 @@
                     <h2>Another ToDo app for your Multiple Tasks</h2>
                     <p>You can easy add task to your list, add, edit or remove multiple list as you want, “tap” it to finish task, restore “recently done” tasks.</p>
                     <a href="https://marketplace.firefox.com/app/taskino" class="firefox-marketplace" title="Available on FireFox Marketplace">Available on FireFox Marketplace</a>
-                    <a href="github" class="github" title="View at GitHub">View at GitHub</a>
+                    <a href="https://github.com/kopipejst/taskino" class="github" title="View at GitHub">View at GitHub</a>
                 </div>
                 <div class="content-right">
                     <div class="smartphone">
