@@ -22,8 +22,9 @@
                             <a href="javascript:void(0)" id="edit-list-show">Edit</a>
                         </div>
                         <ul>
-                            <li class="list">
-                                <a href="javascript:void(0)" class="active-list" id="default-list" data-list-id="0">Default</a>
+                            <li class="list" id="default-list">
+                                <a href="javascript:void(0)" class="active-list" data-list-id="0">Default</a>
+                                <span class="color" style="background-color: #DB5D4B"></span>
                             </li>
                         </ul>
                         <ul id="lists"></ul>
@@ -62,6 +63,7 @@
         <script type="text/template" id="lists-template">
             <span class="delete" data-list-id="<%- id %>">-</span>
             <a href="javascript:void(0)" data-list-id="<%- id %>"><%- name %></a>
+            <span class="color" style="background-color: <%- color %>"></span>
         </script>
 
         <div id="overlay" class="edit-lists">
@@ -73,6 +75,13 @@
                 <div class="new-holder">
                     <input id="new-list" placeholder="Name of new list" autofocus>
                     <button type="submit" class="add-new-list-button" id="add-list">Add</button>
+                </div>
+                <div class="colors-holder">
+                    Choose color:
+                    <span class="color" style="background-color: #0099ff"></span>
+                    <span class="color" style="background-color: #9900ff"></span>
+                    <span class="color" style="background-color: #00ff99"></span>
+                    <span class="color" style="background-color: #ff0099"></span>
                 </div>
             </div>
 

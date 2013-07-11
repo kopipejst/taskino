@@ -1,7 +1,7 @@
 /*global define,snapper*/
 'use strict';
 
-define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/lists', 'views/item', 'views/list'], 
+define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/lists', 'views/item', 'views/list'],
     function($, _, Backbone, Items, Lists, ItemView, ListView) {
 
     var AppView = Backbone.View.extend({
@@ -161,7 +161,8 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             }
 
             this.lists.create({
-                name: this.$inputList.val().trim()
+                name: this.$inputList.val().trim(),
+                color: '#0099FF'
             }, {
                 wait: true,
                 success: function (res) {
@@ -171,6 +172,10 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
                     that.$input.focus();
                 }
             });
+        },
+
+        setColor: function (color) {
+
         },
 
         showEditLists: function (e) {
