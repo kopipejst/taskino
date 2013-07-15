@@ -1,13 +1,14 @@
 /*global define*/
 'use strict';
 
-define(['underscore', 'backbone'], function(_, Backbone) {
+define(['underscore', 'backbone', 'collections/lists'], function(_, Backbone, Lists) {
 
     var Item = Backbone.Model.extend({
         // Default attributes for the todo item.
         defaults: {
             listId: 0,
-            done: false
+            done: false,
+            color: '#000'
         }
 
     });

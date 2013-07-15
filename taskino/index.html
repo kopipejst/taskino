@@ -7,9 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="stylesheet" href="styles/main.css">
-        <!-- build:js scripts/vendor/modernizr.js -->
-        <script src="components/modernizr/modernizr.js"></script>
-        <!-- endbuild -->
+        <script src="scripts/vendor/modernizr.js"></script>
     </head>
     <body id="app">
         <div class="relative tall">
@@ -22,12 +20,8 @@
                             <a href="javascript:void(0)" id="edit-list-show">Edit</a>
                         </div>
                         <ul>
-                            <li class="list" id="all-list">
-                                <a href="javascript:void(0)" class="active-list" data-list-id="">All Tasks</a>
-                            </li>
-                            <li class="list" id="default-list">
-                                <a href="javascript:void(0)" data-list-id="0">Default</a>
-                                <span class="color" style="background-color: #0099ff"></span>
+                            <li class="list">
+                                <a href="javascript:void(0)" class="active-list" id="default-list" data-list-id="0">Default</a>
                             </li>
                         </ul>
                         <ul id="lists"></ul>
@@ -60,15 +54,12 @@
         </div>
 
         <script type="text/template" id="item-template">
-            <div style="border-left: 2px solid <%- color %>">
-                <%- title %>
-            </div>
+            <%- title %>
         </script>
 
         <script type="text/template" id="lists-template">
             <span class="delete" data-list-id="<%- id %>">-</span>
             <a href="javascript:void(0)" data-list-id="<%- id %>"><%- name %></a>
-            <span class="color" style="background-color: <%- color %>"></span>
         </script>
 
         <div id="overlay" class="edit-lists">
@@ -78,15 +69,8 @@
                     <button type="submit" class="cancel-list overlay-cancel">Cancel</button>
                 </div>
                 <div class="new-holder">
-                    <input id="new-list" placeholder="Name of new list" autofocus>
+                    <input id="new-list" placeholder="Name of new list" autofocus="">
                     <button type="submit" class="add-new-list-button" id="add-list">Add</button>
-                </div>
-                <div class="colors-holder">
-                    Choose color:
-                    <span class="color" style="background-color: #0099ff"></span>
-                    <span class="color" style="background-color: #9900ff"></span>
-                    <span class="color" style="background-color: #00ff99"></span>
-                    <span class="color" style="background-color: #ff0099"></span>
                 </div>
             </div>
 
@@ -106,8 +90,5 @@
             </div>
         </div>
 
-        <!-- build:js scripts/main.js -->
         <script data-main="scripts/main" src="components/requirejs/require.js"></script>
-        <!-- endbuild -->
 </body>
-</html>

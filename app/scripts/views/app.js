@@ -124,10 +124,10 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
         prepareListId: function (evt) {
             var id = evt.target ? $(evt.target).data('list-id') : evt;
             $('.list a').removeClass('active-list');
-            if ( id !== 0) {
+            if ( id !== '') {
                 $(evt.target).addClass('active-list');
             } else {
-                this.$('#default-list').addClass('active-list');
+                this.$('#all-list a').addClass('active-list');
             }
             this.setListId(id);
         },
@@ -220,14 +220,14 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             $('#lists').addClass('mode-edit');
             this.mode = 'edit';
             $('#add-list-show').hide();
-            $('#default-list').slideUp(this.animationDuration);
+            $('#default-list, #all-list').slideUp(this.animationDuration);
         },
 
         editModeOff: function () {
             $('#lists').removeClass('mode-edit');
             this.mode = '';
             $('#add-list-show').show();
-            $('#default-list').slideDown(this.animationDuration);
+            $('#default-list, #all-list').slideDown(this.animationDuration);
         },
 
         renameList: function () {

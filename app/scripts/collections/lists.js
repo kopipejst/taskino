@@ -10,20 +10,37 @@ define(['underscore', 'backbone', 'localStorage', 'models/list'], function(_, Ba
 
         localStorage: new LocalStorage('portalist-list'),
 
-        removeByListId: function (listId) {
-            var m = this.where({id: listId});
-            for(var i in m) {
+        removeByListId: function(listId) {
+            var m = this.where({
+                id: listId
+            });
+            for (var i in m) {
                 m[i].destroy();
                 this.remove(m[i]);
             }
         },
 
-        getNameById: function (listId) {
-            var m = this.where({id: listId});
-            if(m[0]) {
+        getNameById: function(listId) {
+            var m = this.where({
+                id: listId
+            });
+            if (m[0]) {
                 return m[0].attributes.name;
             } else {
                 return PORTALIST.fixedListName;
+            }
+        },
+
+        getColorById: function(listId) {
+            var m = this.where({
+                id: listId
+            });
+
+            if (m[0]) {
+                console.log(m[0].attributes)
+                return m[0].attributes.color;
+            } else {
+                return '#0099ff';
             }
         }
     });

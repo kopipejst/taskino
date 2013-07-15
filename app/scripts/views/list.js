@@ -17,7 +17,6 @@ define(['underscore', 'backbone', 'jquery'], function(_, Backbone, $) {
         },
 
         render: function() {
-            this.$el.data('list-id', this.model.id);
             this.$el.html(this.template(this.model.toJSON()));
             return this;
         }

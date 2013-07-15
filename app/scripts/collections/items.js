@@ -1,7 +1,7 @@
 /*global define*/
 'use strict';
 
-define(['underscore', 'backbone', 'localStorage', 'models/item'], function(_, Backbone, LocalStorage, Item) {
+define(['underscore', 'backbone', 'localStorage', 'models/item', 'collections/lists'], function(_, Backbone, LocalStorage, Item, Lists) {
 
     var Items = Backbone.Collection.extend({
 
@@ -9,6 +9,17 @@ define(['underscore', 'backbone', 'localStorage', 'models/item'], function(_, Ba
         model: Item,
 
         localStorage: new LocalStorage('portalist-item'),
+
+        parse: function (data) {
+            var list = new Lists();
+            list.fetch();
+            console.log(data)
+            for(var item in data) {
+                console.log(data[item].listId)
+                data[item].color = list.getColorById(data[item].listId);
+            }
+            return data;
+        },
 
         filterDone: function (listId) {
             var done = this.filter( function (item) {

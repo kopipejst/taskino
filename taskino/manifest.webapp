@@ -1,0 +1,14 @@
+{
+    "version": "0.1",
+    "name": "Taskino",
+    "description": "Create multiple to-do lists easy",
+    "launch_path": "/index.html",
+    "icons": {
+        "60": "/images/taskino_icon_60.png",
+        "128": "/images/taskino_icon_128.png"
+    },
+    "developer": {
+        "name": "Ivan Lazarevic",
+        "url": "http://workshop.rs"
+    }
+}
