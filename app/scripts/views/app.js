@@ -43,7 +43,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
 
             this.items.fetch();
             //this.collection.removeDone();
-            this.setListId(0);
+            this.setListId('');
 
             this.lists.fetch();
 
