@@ -17,7 +17,8 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             'click .overlay-cancel': 'overlayHide',
             'click #edit-list-show': 'showEditLists',
             'click #remove-list': 'removeList',
-            'click #rename-list': 'renameList'
+            'click #rename-list': 'renameList',
+            'click .choose-color': 'setColor'
         },
 
         initialize: function() {
@@ -47,6 +48,8 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
 
             this.lists.fetch();
 
+            this.color = '#f3f3f3';
+
         },
 
         showDone : function () {
@@ -60,6 +63,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
 
         showActive : function () {
             $('#items-active').html('');
+            this.items.fetch();
             var coll = this.items.filterActive(this.activeList);
             coll.each(function (item) {
                 var view = new ItemView({ model: item });
@@ -78,6 +82,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
         },
 
         addOne: function(item) {
+            item.attributes.color = this.lists.getColorById(this.activeList);
             var view = new ItemView({ model: item });
             $('#items-active').prepend(view.render().el);
         },
@@ -86,12 +91,12 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
         newAttributes: function () {
             return {
                 title: this.$input.val().trim(),
-                listId: this.activeList,
+                listId: this.activeList === '' ? 0 : this.activeList,
                 done: false
             };
         },
 
-        createOnEnter: function(e) {
+        createOnEnter: function (e) {
             if (e.which !== 13 || !this.$input.val().trim()) {
                 return;
             }
@@ -162,7 +167,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
 
             this.lists.create({
                 name: this.$inputList.val().trim(),
-                color: '#0099FF'
+                color: this.color
             }, {
                 wait: true,
                 success: function (res) {
@@ -172,10 +177,6 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
                     that.$input.focus();
                 }
             });
-        },
-
-        setColor: function (color) {
-
         },
 
         showEditLists: function (e) {
@@ -234,6 +235,13 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
             var model = this.lists.get({id: this.deleteList});
             model.save({ name: $('#edit-list-name').val() });
             this.overlayHide();
+        },
+
+        setColor: function (evt) {
+            $('.choose-color').removeClass('selected-color');
+            $(evt.target).addClass('selected-color');
+
+            this.color = $(evt.target).data('color');
         }
 
     });

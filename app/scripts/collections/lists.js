@@ -36,8 +36,7 @@ define(['underscore', 'backbone', 'localStorage', 'models/list'], function(_, Ba
                 id: listId
             });
 
-            if (m[0]) {
-                console.log(m[0].attributes)
+            if (m[0] && m[0].attributes) {
                 return m[0].attributes.color;
             } else {
                 return '#0099ff';

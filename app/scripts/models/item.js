@@ -7,8 +7,7 @@ define(['underscore', 'backbone', 'collections/lists'], function(_, Backbone, Li
         // Default attributes for the todo item.
         defaults: {
             listId: 0,
-            done: false,
-            color: '#000'
+            done: false
         }
 
     });

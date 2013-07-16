@@ -13,9 +13,8 @@ define(['underscore', 'backbone', 'localStorage', 'models/item', 'collections/li
         parse: function (data) {
             var list = new Lists();
             list.fetch();
-            console.log(data)
+
             for(var item in data) {
-                console.log(data[item].listId)
                 data[item].color = list.getColorById(data[item].listId);
             }
             return data;
