@@ -48,7 +48,7 @@ define(['jquery', 'underscore', 'backbone', 'collections/items', 'collections/li
 
             this.lists.fetch();
 
-            this.color = '#f3f3f3';
+            this.color = PORTALIST.defaultColor;
 
         },
 

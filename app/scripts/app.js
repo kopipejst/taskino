@@ -3,7 +3,8 @@
 
 var snapper,
     PORTALIST = {
-        fixedListName: 'Default'
+        fixedListName: 'Default',
+        defaultColor: '#9D4535'
     };
 
 define([

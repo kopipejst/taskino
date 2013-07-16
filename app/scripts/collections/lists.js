@@ -21,6 +21,11 @@ define(['underscore', 'backbone', 'localStorage', 'models/list'], function(_, Ba
         },
 
         getNameById: function(listId) {
+
+            if (listId === '') {
+                return 'All Tasks';
+            }
+
             var m = this.where({
                 id: listId
             });
@@ -39,7 +44,7 @@ define(['underscore', 'backbone', 'localStorage', 'models/list'], function(_, Ba
             if (m[0] && m[0].attributes) {
                 return m[0].attributes.color;
             } else {
-                return '#0099ff';
+                return PORTALIST.defaultColor;
             }
         }
     });
